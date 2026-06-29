@@ -1,11 +1,10 @@
 package com.proteinevolution.backend.controller;
 
 
+import com.proteinevolution.backend.dto.HealthResponse;
 import com.proteinevolution.backend.service.HealthService;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 
@@ -15,6 +14,7 @@ public class HealthController {
 
 
     private final HealthService healthService;
+
 
 
     public HealthController(
@@ -28,7 +28,7 @@ public class HealthController {
 
 
     @GetMapping("/status")
-    public String status(){
+    public HealthResponse status(){
 
         return healthService.getStatus();
 
