@@ -1,0 +1,116 @@
+# ==========================
+# Maven
+# ==========================
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+pom.xml.versionsBackup
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.properties
+
+
+# ==========================
+# IntelliJ IDEA
+# ==========================
+
+.idea/
+*.iml
+*.iws
+*.ipr
+
+out/
+
+
+# ==========================
+# Eclipse / STS
+# ==========================
+
+.classpath
+.project
+.settings/
+
+
+# ==========================
+# VS Code
+# ==========================
+
+.vscode/
+
+
+# ==========================
+# Java
+# ==========================
+
+*.class
+
+# Logs
+*.log
+
+
+# ==========================
+# Spring Boot
+# ==========================
+
+# Config local
+application-local.properties
+application-local.yml
+
+# Environment variables
+.env
+
+
+# ==========================
+# OS files
+# ==========================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+
+# ==========================
+# Build files
+# ==========================
+
+*.jar
+*.war
+*.ear
+
+
+# ==========================
+# Database
+# ==========================
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+
+# ==========================
+# Temporary files
+# ==========================
+
+*.tmp
+*.temp
+*.swp
+
+
+# ==========================
+# Docker
+# ==========================
+
+docker-compose.override.yml
+
+
+# ==========================
+# Spring generated files
+# ==========================
+
+/.sts4-cache/
