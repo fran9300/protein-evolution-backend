@@ -18,7 +18,7 @@ public class ProteinService {
 
 
         return List.of(
-
+                // simulo datos por ahora
                 new ProteinResponse(
                         "P04637",
                         393,
