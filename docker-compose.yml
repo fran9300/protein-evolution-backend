@@ -1,0 +1,32 @@
+services:
+
+  postgres:
+
+    image: postgres:16
+
+    container_name: protein-postgres
+
+    environment:
+
+      POSTGRES_DB: protein_db
+
+      POSTGRES_USER: postgres
+
+      POSTGRES_PASSWORD: postgres
+
+      TZ: UTC
+
+    ports:
+
+      - "5432:5432"
+
+
+    volumes:
+
+      - postgres_data:/var/lib/postgresql/data
+
+
+
+volumes:
+
+  postgres_data:

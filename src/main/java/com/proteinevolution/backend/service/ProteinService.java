@@ -3,6 +3,7 @@ package com.proteinevolution.backend.service;
 
 import com.proteinevolution.backend.dto.ProteinResponse;
 
+import com.proteinevolution.backend.repository.ProteinRepository;
 import org.springframework.stereotype.Service;
 
 
@@ -13,24 +14,34 @@ import java.util.List;
 public class ProteinService {
 
 
+    private final ProteinRepository repository;
+
+
+    public ProteinService(
+            ProteinRepository repository
+    ){
+
+        this.repository = repository;
+
+    }
+
 
     public List<ProteinResponse> getProteins(){
 
 
-        return List.of(
-                // simulo datos por ahora
-                new ProteinResponse(
-                        "P04637",
-                        393,
-                        43652.71,
-                        6.33,
-                        -0.756
+        return repository.findAll()
+                .stream()
+                .map(protein ->
+                        new ProteinResponse(
+                                protein.getProteinId(),
+                                protein.getLength(),
+                                protein.getMolecularWeight(),
+                                protein.getPI(),
+                                protein.getHydrophobicity()
+                        )
                 )
-
-        );
-
+                .toList();
 
     }
-
 
 }
