@@ -121,4 +121,17 @@ public class ProteinController {
     }
 
 
+    @DeleteMapping("/{id}")
+    @Operation(
+            summary = "Delete protein analysis"
+    )
+    public void deleteProtein(
+            @PathVariable Long id
+    ){
+
+        proteinService.deleteProtein(id);
+
+    }
+
+
 }

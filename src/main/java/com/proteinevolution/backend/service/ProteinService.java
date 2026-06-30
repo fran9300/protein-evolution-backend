@@ -97,6 +97,11 @@ public class ProteinService {
     }
 
 
+    public void deleteProtein(Long id){
+        repository.deleteById(id);
+    }
+
+
     public ProteinAnalysisDetailResponse getDetail(Long id)
             throws Exception {
 
