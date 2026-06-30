@@ -48,6 +48,8 @@ public class ProteinService {
 
                         new ProteinResponse(
 
+                                protein.getId(),
+
                                 protein.getProteinId(),
 
                                 protein.getLength(),
