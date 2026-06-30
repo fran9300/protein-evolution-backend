@@ -3,7 +3,7 @@ package com.proteinevolution.backend.dto;
 
 public record ProteinResponse(
 
-        String id,
+        String proteinId,
 
         int length,
 

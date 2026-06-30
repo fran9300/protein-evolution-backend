@@ -1,6 +1,7 @@
 package com.proteinevolution.backend.controller;
 
 
+import com.proteinevolution.backend.dto.ProteinAnalysisDetailResponse;
 import com.proteinevolution.backend.dto.ProteinAnalysisResponse;
 import com.proteinevolution.backend.dto.ProteinResponse;
 import com.proteinevolution.backend.service.ProteinAnalysisService;
@@ -62,6 +63,26 @@ public class ProteinController {
 
 
         return proteinService.getProteins();
+
+    }
+
+
+    @Operation(
+            summary = "Get protein analysis by id"
+    )
+    @GetMapping("/{id}")
+    public ResponseEntity<ProteinAnalysisDetailResponse> getById(
+
+            @PathVariable Long id
+
+    ) throws Exception {
+
+
+        return ResponseEntity.ok(
+
+                proteinService.getDetail(id)
+
+        );
 
     }
 
