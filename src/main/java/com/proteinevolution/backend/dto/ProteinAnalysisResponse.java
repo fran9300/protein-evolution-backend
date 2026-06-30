@@ -25,22 +25,22 @@ public record ProteinAnalysisResponse(
     public record ProteinSummary(
 
             @JsonProperty("protein_id")
-            String protein_id,
+            String proteinId,
 
             int length,
 
             @JsonProperty("molecular_weight")
-            double molecular_weight,
+            double molecularWeight,
 
             double pI,
 
             double hydrophobicity,
 
             @JsonProperty("instability_index")
-            double instability_index,
+            double instabilityIndex,
 
             @JsonProperty("aliphatic_index")
-            double aliphatic_index
+            double aliphaticIndex
 
     ){}
 
