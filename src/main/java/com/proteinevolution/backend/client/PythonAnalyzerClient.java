@@ -1,7 +1,7 @@
 package com.proteinevolution.backend.client;
 
 
-import com.proteinevolution.backend.dto.ProteinAnalysisResponse;
+import com.proteinevolution.backend.dto.PythonAnalyzerResponse;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
@@ -31,7 +31,7 @@ public class PythonAnalyzerClient {
     }
 
 
-    public ProteinAnalysisResponse analyze(
+    public PythonAnalyzerResponse analyze(
             MultipartFile file
     ) throws Exception {
 
@@ -62,7 +62,7 @@ public class PythonAnalyzerClient {
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .body(body)
                 .retrieve()
-                .body(ProteinAnalysisResponse.class);
+                .body(PythonAnalyzerResponse.class);
 
     }
 

@@ -3,6 +3,7 @@ package com.proteinevolution.backend.service;
 
 import com.proteinevolution.backend.client.PythonAnalyzerClient;
 import com.proteinevolution.backend.dto.ProteinAnalysisResponse;
+import com.proteinevolution.backend.dto.PythonAnalyzerResponse;
 import com.proteinevolution.backend.model.ProteinAnalysis;
 
 import org.springframework.stereotype.Service;
@@ -54,7 +55,7 @@ public class ProteinAnalysisService {
 
         // Llamada al microservicio Python
 
-        ProteinAnalysisResponse response =
+        PythonAnalyzerResponse pythonResponse  =
 
                 analyzerClient.analyze(file);
 
@@ -66,30 +67,30 @@ public class ProteinAnalysisService {
 
                 new ProteinAnalysis(
 
-                        response.protein().proteinId(),
+                        pythonResponse .protein().proteinId(),
 
-                        response.protein().length(),
+                        pythonResponse .protein().length(),
 
-                        response.protein().molecularWeight(),
+                        pythonResponse .protein().molecularWeight(),
 
-                        response.protein().pI(),
+                        pythonResponse .protein().pI(),
 
-                        response.protein().hydrophobicity(),
+                        pythonResponse .protein().hydrophobicity(),
 
-                        response.protein().instabilityIndex(),
+                        pythonResponse .protein().instabilityIndex(),
 
-                        response.protein().aliphaticIndex(),
+                        pythonResponse .protein().aliphaticIndex(),
 
                         mapper.writeValueAsString(
 
-                                response.composition()
+                                pythonResponse .composition()
 
                         ),
 
 
                         mapper.writeValueAsString(
 
-                                response.structure()
+                                pythonResponse.structure()
 
                         )
 
@@ -106,7 +107,38 @@ public class ProteinAnalysisService {
 
 
 
-        return response;
+        return new ProteinAnalysisResponse(
+
+                new ProteinAnalysisResponse.ProteinSummary(
+
+                        pythonResponse.protein().proteinId(),
+
+                        pythonResponse.protein().length(),
+
+                        pythonResponse.protein().molecularWeight(),
+
+                        pythonResponse.protein().pI(),
+
+                        pythonResponse.protein().hydrophobicity(),
+
+                        pythonResponse.protein().instabilityIndex(),
+
+                        pythonResponse.protein().aliphaticIndex()
+
+                ),
+
+                pythonResponse.composition(),
+
+                new ProteinAnalysisResponse.Structure(
+
+                        pythonResponse.structure().alphaHelix(),
+
+                        pythonResponse.structure().turn(),
+
+                        pythonResponse.structure().betaSheet()
+
+                )
+        );
 
     }
 
