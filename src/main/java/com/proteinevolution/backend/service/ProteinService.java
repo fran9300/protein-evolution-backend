@@ -62,14 +62,13 @@ public class ProteinService {
 
 
 
-    public ProteinAnalysis save(
+    public void saveAnalysis(
             ProteinAnalysis protein
     ){
 
-        return repository.save(
+        repository.save(
                 protein
         );
-
     }
 
 

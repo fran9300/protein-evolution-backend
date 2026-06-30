@@ -7,7 +7,7 @@ import com.proteinevolution.backend.model.ProteinAnalysis;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
+import tools.jackson.databind.ObjectMapper;
 
 
 @Service
@@ -19,20 +19,24 @@ public class ProteinAnalysisService {
 
     private final ProteinService proteinService;
 
-
+    private final ObjectMapper mapper;
 
 
     public ProteinAnalysisService(
 
             PythonAnalyzerClient analyzerClient,
 
-            ProteinService proteinService
+            ProteinService proteinService,
+
+            ObjectMapper mapper
 
     ){
 
         this.analyzerClient = analyzerClient;
 
         this.proteinService = proteinService;
+
+        this.mapper = mapper;
 
     }
 
@@ -74,7 +78,21 @@ public class ProteinAnalysisService {
 
                         response.protein().instabilityIndex(),
 
-                        response.protein().aliphaticIndex()
+                        response.protein().aliphaticIndex(),
+
+                        mapper.writeValueAsString(
+
+                                response.composition()
+
+                        ),
+
+
+                        mapper.writeValueAsString(
+
+                                response.structure()
+
+                        )
+
 
                 );
 
@@ -82,7 +100,7 @@ public class ProteinAnalysisService {
 
         // Guardar en PostgreSQL
 
-        proteinService.save(
+        proteinService.saveAnalysis(
                 analysis
         );
 

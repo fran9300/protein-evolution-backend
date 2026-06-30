@@ -3,6 +3,10 @@ package com.proteinevolution.backend.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -39,6 +43,20 @@ public class ProteinAnalysis {
 
     private Double aliphaticIndex;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private String composition;
+
+
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private String structure;
+
+
+
+    private LocalDateTime createdAt;
+
 
 
     public ProteinAnalysis(){}
@@ -52,7 +70,9 @@ public class ProteinAnalysis {
             Double pI,
             Double hydrophobicity,
             Double instabilityIndex,
-            Double aliphaticIndex
+            Double aliphaticIndex,
+            String composition,
+            String structure
     ){
 
         this.proteinId = proteinId;
@@ -62,6 +82,9 @@ public class ProteinAnalysis {
         this.hydrophobicity = hydrophobicity;
         this.instabilityIndex = instabilityIndex;
         this.aliphaticIndex = aliphaticIndex;
+        this.composition = composition;
+        this.structure = structure;
+        this.createdAt = LocalDateTime.now();
 
     }
 
